@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=initial-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <title>Pokémon Search App</title>
+    <style>
+      body{
+        text-align: center;
+        background-color: #F5DEB3
+        }
+  
+        #front-card{
+        border: none;
+        width: 650px;
+        height: 850px;
+        border-radius: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #FFFAF0;
+        position: relative;
+        z-index: 1;
+        }
+  
+        #back-card{
+            border: 1px solid black;
+            width: 650px;
+            height: 150px;
+            border-radius: 10%;
+            position: relative;
+            z-index: 0;
+        }
+        
+        #instruction{
+            padding-top: 25px;
+        }
+        
+        input{
+            height: 25px;
+            font-family: Helvetica;
+            text-align: center;
+        }
+        
+        button{
+            background-color: #9370DB;
+            height: 25px;
+        }
+        
+        #name-and-id{
+            display: flex
+        }
+        
+        #pokemon-name{
+            font-family: Helvetica;
+            font-size: 25px;
+            margin-top: 30px;
+            margin-left: 55px;
+        }
+        
+        #pokemon-id{
+            font-family: Helvetica;
+            font-size: 25px;
+            margin-left: 15px;
+            margin-top: 30px;
+        }
+        
+        #weight-and-height{
+            margin-top: 5px;
+            display: flex;
+            margin-left: 55px;
+            margin-bottom: 20px;
+            font-size: 21px
+        }
+        
+        #height{
+            margin-left: 10px;
+            font-family: Helvetica;
+        }
+        
+        #weight{
+            font-family: Helvetica;
+        }
+        
+        #image{
+            border: none;
+            height: 30%;
+            width: 60%;
+            margin-left: 130px;
+        }
+        
+        #types {
+            display: flex;
+        }
+        
+        #types > div{
+            margin-top: 20px;
+            border: none;
+            font-family: Helvetica;
+            width: 60px;
+            height: 20px;
+            margin-left: 25px;
+            border-radius: 15px;
+            padding: 10px 10px 0px 10px;
+            color: black;
+            font-size: 12px;
+        }
+        
+        #electric{
+            background-color: #FFD700;
+        }
+        
+        #fire{
+            background-color: #DC143C
+        }
+        
+        #water{
+            background-color: #1E90FF
+        }
+        
+        #grass{
+            background-color: #7FFF00
+        }
+        
+        #poison{
+            background-color: #9932CC
+        }
+        
+        #rock{
+            background-color: #BDB76B
+        }
+        
+        #ground{
+            background-color: #DAA520
+        }
+        
+        #fighting{
+            background-color: #E9967A
+        }
+        
+        #normal{
+            background-color: #D3D3D3
+        }
+        
+        #fairy{
+            background-color: #EE82EE
+        }
+        
+        #psychic{
+            background-color: #9400D3
+        }
+        
+        #dark{
+            background-color: #A0522D
+        }
+        
+        #flying{
+            background-color: #6A5ACD
+        }
+        
+        #dragon{
+            background-color: #800080
+        }
+        
+        #ghost{
+            background-color: #DCDCDC
+        }
+        
+        #bug{
+            background-color: #ADFF2F
+        }
+        
+        #steel{
+            background-color: #B0C4DE
+        }
+        
+        
+        #columns{
+            margin-left: 170px;
+            display: flex;
+            margin-top: 40px;
+        }
+        
+        #base-head{
+            font-weight: bold;
+        }
+        
+        #base-column > div{
+            background-color: #8B4513;
+            border: 3px solid white;
+            font-family: Helvetica;
+            text-align: center;
+            font-size: 20px;
+            padding: 5px;
+            width: 180px;
+            height: 25px;
+            color: #FFFFFF;
+        }
+        
+        #stats-head{
+            font-weight: bold;
+        }
+        
+        #stats-column > div{
+            background-color: #8B4513;
+            border: 3px solid white;
+            font-family: Helvetica;
+            text-align: center;
+            font-size: 20px;
+            padding: 5px;
+            width: 110px;
+            height: 25px;
+            color: #FFFFFF
+        }
+        
+        #base-column{
+            display: none
+        }
+        
+        #stats-column{
+            display: none
+        }
+    </style>
+  </head>
+  <body>
+    <h1 id="head">Pokémon Card Search App</h1>
+    <div id="back-car"></div>
+    <div id="front-card">
+      <p id="instruction">Search for Pokémon name or ID:</p>
+      <input id="search-input" required/>
+      <button id="search-button">Search</button>
+      <div id="name-and-id">
+        <div id="pokemon-name"></div>
+        <div id="pokemon-id"></div>
+      </div>
+      <div id="weight-and-height">
+        <div id="weight"></div>
+        <div id="height"></div>
+      </div>
+      <div id="image"></div>
+      <div id="types">
+      </div>
+      <div id="columns">
+        <div id="base-column">
+          <div id="base-head">Base</div>
+          <div id="hp-base">HP:</div>
+          <div id="attack-base">Attack:</div>
+          <div id="defense-base">Defense:</div>
+          <div id="special-attack-base">Sp. Attack:</div>
+          <div id="special-defense-base">Sp. Defense:</div>
+          <div id="speed-base">Speed:</div>
+        </div>
+        <div id="stats-column">
+          <div id="stats-head">Stats</div>
+          <div id="hp"></div>
+          <div id="attack"></div>
+          <div id="defense"></div>
+          <div id="special-attack"></div>
+          <div id="special-defense"></div>
+          <div id="speed"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+        const searchInput = document.getElementById("search-input");
+        const searchButton = document.getElementById("search-button");
+        const pokemonName = document.getElementById("pokemon-name");
+        const pokemonId = document.getElementById("pokemon-id");
+        const weight = document.getElementById("weight");
+        const height = document.getElementById("height");
+        const pokeImage = document.getElementById("image");
+        const types = document.getElementById("types");
+        const hp = document.getElementById("hp");
+        const attack = document.getElementById("attack");
+        const defense = document.getElementById("defense");
+        const specialAttack = document.getElementById("special-attack");
+        const specialDefense = document.getElementById("special-defense");
+        const speed = document.getElementById("speed");
+
+        const updateTypes = (typeSlots) => {
+        types.innerHTML = "";
+        let typesArr = [];
+        let upperTypesArr = [];
+        for(let i = 0; i < typeSlots.length; i ++){
+            typesArr.push(typeSlots[i].type.name)
+            upperTypesArr.push(typeSlots[i].type.name.toUpperCase())
+        };
+        for(let i = 0; i < typesArr.length; i++){
+            types.innerHTML += `<div id="${typesArr[i]}">${upperTypesArr[i]}</div>` 
+        }
+        }
+
+        const updateDisplay = (detailedUrl, pokeName) => {
+        //Display Columns
+        document.getElementById("base-column").style.display = "inline";
+        document.getElementById("stats-column").style.display = "inline";
+        //Update Name
+        pokemonName.textContent = detailedUrl.name.toUpperCase();
+        //Update ID
+        pokemonId.textContent = "#";
+        pokemonId.textContent +=  detailedUrl.id;
+        //Update Weight
+        weight.textContent = "Weight: ";
+        weight.textContent += detailedUrl.weight;
+        //Update Height
+        height.textContent = "Height: ";
+        height.textContent += detailedUrl.height;
+        //Update Image
+        pokeImage.innerHTML = `<img id="sprite" height="100%" src="${detailedUrl.sprites.front_default}"/>`;
+        //Obtain Types and Send to Find and Display
+        const typeSlots = detailedUrl.types;
+        updateTypes(typeSlots)
+        //Update HP
+        hp.textContent = detailedUrl.stats[0].base_stat;
+        //Update ATT
+        attack.textContent = detailedUrl.stats[1].base_stat;
+        //Update DEF
+        defense.textContent = detailedUrl.stats[2].base_stat;
+        //UpdateSpATT
+        specialAttack.textContent = detailedUrl.stats[3].base_stat;
+        //UpdateSpDef
+        specialDefense.textContent = detailedUrl.stats[4].base_stat;
+        //Update Speed
+        speed.textContent = detailedUrl.stats[5].base_stat;
+        }
+
+        const fetchIndividualUrl = (pokeObj, pokeName) => {
+        let location;
+        for(let i = 0; i < pokeObj.results.length; i++){
+            if(pokeName == pokeObj.results[i].name){
+            location = pokeObj.results[i].id
+            };
+        }
+        let detailedUrl;
+        fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${location}/`)
+            .then((res) => res.json())
+            .then((data) => {detailedUrl = data;
+            updateDisplay(detailedUrl, pokeName)})
+            .catch((err) => console.log("error 2"))
+        };
+
+        const findMonster = (pokeObj, pokeName) => {
+        let searchCount = 0
+        for(let i = 0; i < pokeObj.results.length; i++){
+            if(pokeName == pokeObj.results[i].name){
+            searchCount += 1;
+            }else if(pokeName == pokeObj.results[i].id){
+            pokeName = pokeObj.results[i].name
+            searchCount += 1;
+            };
+        };
+        if(searchCount > 0){
+            fetchIndividualUrl(pokeObj, pokeName)
+        }else{
+            alert("Pokémon not found")
+        }
+        }
+
+        const getPokeObject = () => {
+        let pokeObj;
+        const pokeName = searchInput.value.toLowerCase();
+        fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
+            .then((res) => res.json())
+            .then((data) => {pokeObj = data;
+            findMonster(pokeObj, pokeName)})
+            .catch((err) => console.log("error 1"))
+        searchInput.value = ""
+        };
+
+        searchButton.addEventListener("click", getPokeObject)
+
+        searchInput.addEventListener("keydown", (e) => {
+        if(e.key === "Enter"){
+            getPokeObject();
+        };
+        });
+    </script>
+</html>
